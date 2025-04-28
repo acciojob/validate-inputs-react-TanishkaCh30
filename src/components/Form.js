@@ -11,7 +11,7 @@ const Form = () => {
         mobile: ""
     });
 
-    let[error,setError] = useState("");
+    let[error,setError] = useState({});
     let newErrors ={}
 
     function handleValues(e){
@@ -55,6 +55,11 @@ const Form = () => {
 
         if(Object.keys(newErrors).length>0){
             setError(newErrors);
+        }
+        else {
+            
+            setError({});
+            alert("Form submitted successfully!");
         }
 
     }
