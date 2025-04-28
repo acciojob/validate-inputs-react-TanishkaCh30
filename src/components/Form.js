@@ -95,7 +95,7 @@ const Form = () => {
         if (!mobile) {
             newErrors.mobile = "Mobile is required";
         } else if (mobile.length !== 10) {
-            newErrors.mobile = "Mobile number should be exactly 10 digits";
+            newErrors.mobile ='Mobile number should not be more than 10 characters';
         }
     
         if (Object.keys(newErrors).length > 0) {
@@ -111,7 +111,7 @@ const Form = () => {
 
         <div>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Name</label>
                 <br></br>
                 <input type="text"
@@ -142,7 +142,7 @@ const Form = () => {
                      {error.mobile && <p className="errorMessage">{error.mobile}</p>}
                 <br></br>
                 <br></br>
-                <button type="submit" onClick={handleSubmit}>Submit</button>
+                <button type="submit">Submit</button>
             </form>
 
         </div>
