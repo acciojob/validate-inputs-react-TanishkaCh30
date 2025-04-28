@@ -12,7 +12,7 @@ const Form = () => {
     });
 
     let[error,setError] = useState({});
-    let newErrors ={}
+    
 
     function handleValues(e){
         let value = e.target.value;
@@ -21,48 +21,91 @@ const Form = () => {
         setData({...data,[name] : value})
     }
 
-    function handleSubmit(e){
-        e.preventDefault();
+    // function handleSubmit(e){
+    //     e.preventDefault();
 
-        let{name,address,email,mobile} = data;
+    //     let{name,address,email,mobile} = data;
        
+    //     const hasLetter = /^[a-zA-Z]+$/.test(name);
+    //     const hasAddress = /^[a-zA-Z0-9\s]+$/.test(address);
+
+    //     if(!name || !address || !email || !mobile){
+    //         alert("Fill all the fields")
+    //         return
+    //     }
+
+    //     if(!hasLetter){
+    //        newErrors.name = "Name should contain only letters";
+         
+    //     }
+
+    //     if(!hasAddress){
+    //       newErrors.address = "Address should not contain special characters";
+    //     }
+
+    //     if(!email.includes('@') || !email.includes('.com')){
+    //         newErrors.email = "Email should contain @ and .com";
+           
+    //     }
+
+    //     if(!mobile.length<=10){
+    //         newErrors.mobile = "Mobile number should not be more than 10 characters";
+            
+    //     }
+
+    //     if(Object.keys(newErrors).length>0){
+    //         setError(newErrors);
+    //     }
+    //     else {
+            
+    //         setError({});
+    //         alert("Form submitted successfully!");
+    //     }
+
+    // }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+    
+        let { name, address, email, mobile } = data;
+    
         const hasLetter = /^[a-zA-Z]+$/.test(name);
         const hasAddress = /^[a-zA-Z0-9\s]+$/.test(address);
-
-        if(!name || !address || !email || !mobile){
-            alert("Fill all the fields")
-            return
+    
+        let newErrors = {}; // Reset errors every time
+    
+        if (!name) {
+            newErrors.name = "Name is required";
+        } else if (!hasLetter) {
+            newErrors.name = "Name should contain only letters";
         }
-
-        if(!hasLetter){
-           newErrors.name = "Name should contain only letters";
-         
+    
+        if (!address) {
+            newErrors.address = "Address is required";
+        } else if (!hasAddress) {
+            newErrors.address = "Address should not contain special characters";
         }
-
-        if(!hasAddress){
-          newErrors.address = "Address should not contain special characters";
-        }
-
-        if(!email.includes('@') || !email.includes('.com')){
+    
+        if (!email) {
+            newErrors.email = "Email is required";
+        } else if (!email.includes('@') || !email.includes('.com')) {
             newErrors.email = "Email should contain @ and .com";
-           
         }
-
-        if(!mobile.length<=10){
-            newErrors.mobile = "Mobile number should not be more than 10 characters";
-            
+    
+        if (!mobile) {
+            newErrors.mobile = "Mobile is required";
+        } else if (mobile.length !== 10) {
+            newErrors.mobile = "Mobile number should be exactly 10 digits";
         }
-
-        if(Object.keys(newErrors).length>0){
+    
+        if (Object.keys(newErrors).length > 0) {
             setError(newErrors);
-        }
-        else {
-            
+        } else {
             setError({});
             alert("Form submitted successfully!");
         }
-
     }
+    
 
     return (
 
