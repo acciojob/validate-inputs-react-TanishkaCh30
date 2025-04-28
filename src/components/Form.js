@@ -26,10 +26,13 @@ const Form = () => {
 
         let{name,address,email,mobile} = data;
        
-        const hasLetter = /[a-zA-Z]/.test(name);
+        const hasLetter = /^[a-zA-Z]+$/.test(name);
         const hasAddress = /^[a-zA-Z0-9\s]+$/.test(address);
 
-        
+        if(!name || !address || !email || !mobile){
+            alert("Fill all the fields")
+            return
+        }
 
         if(!hasLetter){
            newErrors.name = "Name should contain only letters";
@@ -45,7 +48,7 @@ const Form = () => {
            
         }
 
-        if(mobile.length!==10){
+        if(!mobile.length<=10){
             newErrors.mobile = "Mobile number should not be more than 10 characters";
             
         }
