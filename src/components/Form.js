@@ -133,7 +133,7 @@ const Form = () => {
                 <br></br>
                 <label>Email</label>
                 <br></br>
-                <input type="email"
+                <input type="text"
                     name="email"
                     onChange={handleValues}></input>
                      <p className="errorMessage">{error.email}</p>
