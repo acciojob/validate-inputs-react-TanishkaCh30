@@ -12,6 +12,8 @@ const Form = () => {
     });
 
     let[error,setError] = useState({});
+
+    console.log(error)
     
 
     function handleValues(e){
@@ -23,6 +25,8 @@ const Form = () => {
 
     // function handleSubmit(e){
     //     e.preventDefault();
+
+    //     let newErrors ={}
 
     //     let{name,address,email,mobile} = data;
        
@@ -48,7 +52,7 @@ const Form = () => {
            
     //     }
 
-    //     if(!mobile.length<=10){
+    //     if(mobile.length>10){
     //         newErrors.mobile = "Mobile number should not be more than 10 characters";
             
     //     }
@@ -118,28 +122,28 @@ const Form = () => {
                     name="name"
                     onChange={handleValues}
                 ></input>
-               {error.name && <p className="errorMessage">{error.name}</p>}
+                <p className="errorMessage">{error.name}</p>
                 <br></br>
                 <label>Address</label>
                 <br></br>
                 <input type="text"
                     name="address"
                     onChange={handleValues}></input>
-                   {error.address && <p className="errorMessage">{error.address}</p>}  
+                    <p className="errorMessage">{error.address}</p>
                 <br></br>
                 <label>Email</label>
                 <br></br>
                 <input type="email"
                     name="email"
                     onChange={handleValues}></input>
-                     {error.email && <p className="errorMessage">{error.email}</p>}
+                     <p className="errorMessage">{error.email}</p>
                 <br></br>
                 <label>Mobile</label>
                 <br></br>
                 <input type="number"
                     name="mobile"
                     onChange={handleValues}></input>
-                     {error.mobile && <p className="errorMessage">{error.mobile}</p>}
+                     <p className="errorMessage">{error.mobile}</p>
                 <br></br>
                 <br></br>
                 <button type="submit">Submit</button>
